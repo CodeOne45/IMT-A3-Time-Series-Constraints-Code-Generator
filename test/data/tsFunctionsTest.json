@@ -1,5 +1,5 @@
 {
-    "testing": {
+    "testTS": {
         "pos_max_max_bump_on_decreasing_sequence" : {
             "result" : 6,
             "time_series" : [7,6,5,6,5,4,1,4,7,5,4,2,5,4,3,3],
@@ -38,7 +38,7 @@
         "pos_max_max_peak": {
             "result" : 6,
             "time_series" : [7,5,5,1,4,5,2,2,3,5,6,2,3,3,3,1],
-            "found": [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0] 
+            "found": [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0]
         },
         "pos_max_max_strictly_decreasing_sequence": {
             "result" : 6,

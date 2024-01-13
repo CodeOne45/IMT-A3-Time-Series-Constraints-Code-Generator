@@ -1,8 +1,7 @@
 import json
 import argparse
 from glob import glob 
-#from TransducerGenerator import *
-from TransducerGeneratorRefector import *
+from TransducerGenerator import *
 
 
 
@@ -25,9 +24,9 @@ if __name__ == "__main__":
             except json.decoder.JSONDecodeError as exc:
                 print(exc)
     # decorationTables.json'
-    tables = json.load(open('src/decorationTablesBis.json'))["tables"]["decoration"]
+    tables = json.load(open('src/decorationTables.json'))["tables"]["decoration"]
     #convert transducers dic to json object
-    transducerGenerator = TransducerGeneratorRefector(transducers, tables)
+    transducerGenerator = TransducerGenerator(transducers, tables)
     transducerGenerator.generate_functions()
 
 
