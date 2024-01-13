@@ -1,0 +1,1434 @@
+{
+  "bump_on_decreasing_sequence": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "u",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "v": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_r"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      },
+      "u": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_r"
+          },
+          {
+            "next": "v",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      }
+    }
+  },
+  "decreasing": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      }
+    }
+  },
+  "decreasing_sequence": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "found"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_a"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_a"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "in"
+          }
+        ]
+      }
+    }
+  },
+  "decreasing_terrace": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      }
+    }
+  },
+  "dip_on_increasing_sequence": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "u",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      },
+      "v": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_r"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      },
+      "u": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "v",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      }
+    }
+  },
+  "gorge": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "found"
+          },
+          {
+            "next": "u",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "in"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_a"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out_a"
+          }
+        ]
+      },
+      "u": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "u",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      }
+    }
+  },
+  "increasing": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      }
+    }
+  },
+  "increasing_sequence": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "found"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "in"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_a"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_a"
+          }
+        ]
+      }
+    }
+  },
+  "increasing_terrace": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      }
+    }
+  },
+  "inflexion": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      }
+    }
+  },
+  "peak": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "found"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out_a"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_a"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "in"
+          }
+        ]
+      }
+    }
+  },
+  "plain": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      }
+    }
+  },
+  "plateau": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      }
+    }
+  },
+  "proper_plain": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "found_e"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      }
+    }
+  },
+  "proper_plateau": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "found_e"
+          }
+        ]
+      }
+    }
+  },
+  "steady": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "found_e"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      }
+    }
+  },
+  "steady_sequence": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": "=",
+            "produce": "found"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_a"
+          },
+          {
+            "next": "r",
+            "consume": "=",
+            "produce": "in"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_a"
+          }
+        ]
+      }
+    }
+  },
+  "strictly_decreasing_sequence": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "found"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out_a"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_a"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "in"
+          }
+        ]
+      }
+    }
+  },
+  "strictly_increasing_sequence": {
+    "entryState": "s",
+    "after": 0,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "found"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "in"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_a"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_a"
+          }
+        ]
+      }
+    }
+  },
+  "summit": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "u",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "found"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "out_a"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_a"
+          },
+          {
+            "next": "t",
+            "consume": ">",
+            "produce": "in"
+          }
+        ]
+      },
+      "u": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "r",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "u",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      }
+    }
+  },
+  "valley": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "s",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "r": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "found"
+          },
+          {
+            "next": "r",
+            "consume": "=",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      },
+      "t": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "t",
+            "consume": "<",
+            "produce": "in"
+          },
+          {
+            "next": "t",
+            "consume": "=",
+            "produce": "maybe_a"
+          },
+          {
+            "next": "r",
+            "consume": ">",
+            "produce": "out_a"
+          }
+        ]
+      }
+    }
+  },
+  "zigzag": {
+    "entryState": "s",
+    "after": 1,
+    "states": {
+      "s": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "a",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "d",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "a": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "a",
+            "consume": "<",
+            "produce": "out"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "b",
+            "consume": ">",
+            "produce": "maybe_b"
+          }
+        ]
+      },
+      "b": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "c",
+            "consume": "<",
+            "produce": "found"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_r"
+          },
+          {
+            "next": "d",
+            "consume": ">",
+            "produce": "out_r"
+          }
+        ]
+      },
+      "c": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "a",
+            "consume": "<",
+            "produce": "out_a"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_a"
+          },
+          {
+            "next": "f",
+            "consume": ">",
+            "produce": "in"
+          }
+        ]
+      },
+      "d": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "e",
+            "consume": "<",
+            "produce": "maybe_b"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out"
+          },
+          {
+            "next": "d",
+            "consume": ">",
+            "produce": "out"
+          }
+        ]
+      },
+      "e": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "a",
+            "consume": "<",
+            "produce": "out_r"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_r"
+          },
+          {
+            "next": "f",
+            "consume": ">",
+            "produce": "found"
+          }
+        ]
+      },
+      "f": {
+        "acceptingState": true,
+        "transitions": [
+          {
+            "next": "c",
+            "consume": "<",
+            "produce": "in"
+          },
+          {
+            "next": "s",
+            "consume": "=",
+            "produce": "out_a"
+          },
+          {
+            "next": "d",
+            "consume": ">",
+            "produce": "out_a"
+          }
+        ]
+      }
+    }
+  }
+}
