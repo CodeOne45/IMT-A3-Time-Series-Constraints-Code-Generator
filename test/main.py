@@ -2,10 +2,14 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from colorama import Fore, Style
 
 sys.path.append('../gen')
 import GeneratedFunctions
 
+# Initialize colorama
+from colorama import init
+init(autoreset=True)
 
 class TestGeneratedFunctions(unittest.TestCase):
     def load_tests(self, file_path):
@@ -18,9 +22,14 @@ class TestGeneratedFunctions(unittest.TestCase):
 
         expected_result = (test_details["result"], test_details["time_series"], test_details["found"]).__str__()
 
-        self.assertEqual(result, expected_result, f"{test_name} is KO\nResult   {result}\nExpected {expected_result}")
+        try:
+            self.assertEqual(result, expected_result)
+            print(Fore.GREEN + f"Pass: {test_name}")
+        except AssertionError as e:
+            print(Fore.RED + f"Fail: {test_name}\nResult   {result}\nExpected {expected_result}")
 
     def test_generated_functions(self):
+        # Use pathlib to ensure platform-independent file path handling
         file_path = Path('data/tsFunctionsTest.json')
 
         if not file_path.is_file():
