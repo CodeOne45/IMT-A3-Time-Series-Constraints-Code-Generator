@@ -23,6 +23,7 @@ if __name__ == "__main__":
                 print(json.load(f))
             except json.decoder.JSONDecodeError as exc:
                 print(exc)
+
     # decorationTables.json'
     tables = json.load(open('src/decorationTables.json'))["tables"]["decoration"]
     #convert transducers dic to json object
