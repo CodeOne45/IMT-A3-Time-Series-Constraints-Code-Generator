@@ -1,7 +1,7 @@
 import json
 import argparse
 from glob import glob 
-from TransducerGenerator import *
+from FunctionsGenerator import *
 
 
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     aggregators = json.load(open('src/decorationTables.json'))["tables"]["aggregators"]
 
     #convert transducers dic to json object
-    transducerGenerator = TransducerGenerator(transducers, tables, aggregators, features)
+    transducerGenerator = FunctionsGenerator(transducers, tables, aggregators, features)
     transducerGenerator.generate_functions()
 
 

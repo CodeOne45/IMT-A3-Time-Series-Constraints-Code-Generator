@@ -9,7 +9,7 @@ import json
 
 
 
-class TransducerGenerator:
+class FunctionsGenerator:
     def __init__(self, transducers, inDecorationTable, inAggregators, inFeatures):
         self.transducers = transducers
         self.decorationTables = inDecorationTable
@@ -51,7 +51,7 @@ class TransducerGenerator:
                 g = aggregator.lower()
                 phi_f = self.features[feature]["phi_f"]
                 for pattern in self.transducers:
-                    function_name = f"pos_{aggregator.lower()}_{feature}_{pattern}"
+                    function_name = f"{aggregator.lower()}_{feature}_{pattern}"
                     f.write(f"def {function_name}(time_series):\n")
                     self.write_transducer_function_body(f, g, phi_f, pattern, aggregator, feature)
                     f.write("\n\n")
