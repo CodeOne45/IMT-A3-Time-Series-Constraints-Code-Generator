@@ -10,22 +10,22 @@ class PerformanceTests:
         self.json = json
         self.nbtest = nbtest
         self.functions = [
-            'pos_max_max_bump_on_decreasing_sequence', 'pos_max_max_decreasing', 'pos_max_max_decreasing_sequence',
-            'pos_max_max_dip_on_increasing_sequence', 'pos_max_max_increasing', 'pos_max_max_increasing_sequence',
-            'pos_max_max_inflexion', 'pos_max_max_peak', 'pos_max_max_strictly_decreasing_sequence',
-            'pos_max_max_strictly_increasing_sequence', 'pos_max_max_summit', 'pos_max_max_zigzag',
-            'pos_max_min_bump_on_decreasing_sequence', 'pos_max_min_decreasing', 'pos_max_min_decreasing_sequence',
-            'pos_max_min_dip_on_increasing_sequence', 'pos_max_min_gorge', 'pos_max_min_increasing',
-            'pos_max_min_increasing_sequence', 'pos_max_min_inflexion', 'pos_max_min_strictly_decreasing_sequence',
-            'pos_max_min_strictly_increasing_sequence', 'pos_max_min_valley', 'pos_max_min_zigzag',
-            'pos_min_max_bump_on_decreasing_sequence', 'pos_min_max_decreasing', 'pos_min_max_decreasing_sequence',
-            'pos_min_max_dip_on_increasing_sequence', 'pos_min_max_increasing', 'pos_min_max_increasing_sequence',
-            'pos_min_max_inflexion', 'pos_min_max_peak', 'pos_min_max_strictly_decreasing_sequence',
-            'pos_min_max_strictly_increasing_sequence', 'pos_min_max_summit', 'pos_min_max_zigzag',
-            'pos_min_min_bump_on_decreasing_sequence', 'pos_min_min_decreasing', 'pos_min_min_decreasing_sequence',
-            'pos_min_min_dip_on_increasing_sequence', 'pos_min_min_gorge', 'pos_min_min_increasing',
-            'pos_min_min_increasing_sequence', 'pos_min_min_inflexion', 'pos_min_min_strictly_decreasing_sequence',
-            'pos_min_min_strictly_increasing_sequence', 'pos_min_min_valley', 'pos_min_min_zigzag'
+            'max_max_bump_on_decreasing_sequence', 'max_max_decreasing', 'max_max_decreasing_sequence',
+            'max_max_dip_on_increasing_sequence', 'max_max_increasing', 'max_max_increasing_sequence',
+            'max_max_inflexion', 'max_max_peak', 'max_max_strictly_decreasing_sequence',
+            'max_max_strictly_increasing_sequence', 'max_max_summit', 'max_max_zigzag',
+            'max_min_bump_on_decreasing_sequence', 'max_min_decreasing', 'max_min_decreasing_sequence',
+            'max_min_dip_on_increasing_sequence', 'max_min_gorge', 'max_min_increasing',
+            'max_min_increasing_sequence', 'max_min_inflexion', 'max_min_strictly_decreasing_sequence',
+            'max_min_strictly_increasing_sequence', 'max_min_valley', 'max_min_zigzag',
+            'min_max_bump_on_decreasing_sequence', 'min_max_decreasing', 'min_max_decreasing_sequence',
+            'min_max_dip_on_increasing_sequence', 'min_max_increasing', 'min_max_increasing_sequence',
+            'min_max_inflexion', 'min_max_peak', 'min_max_strictly_decreasing_sequence',
+            'min_max_strictly_increasing_sequence', 'min_max_summit', 'min_max_zigzag',
+            'min_min_bump_on_decreasing_sequence', 'min_min_decreasing', 'min_min_decreasing_sequence',
+            'min_min_dip_on_increasing_sequence', 'min_min_gorge', 'min_min_increasing',
+            'min_min_increasing_sequence', 'min_min_inflexion', 'min_min_strictly_decreasing_sequence',
+            'min_min_strictly_increasing_sequence', 'min_min_valley', 'min_min_zigzag'
         ]
 
 # ...

@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     unittest.TextTestRunner().run(test_instance.suite)
     # Create an instance of the PerformanceTests class
-    performance_tests = PerformanceTests('data/covid_new_patients_in_intensive_care.json', 1)
+    performance_tests = PerformanceTests('data/Global_Climate_Change_Data.json', 1)
 
     # Run the performance tests
     performance_tests.cpu_charge()

@@ -228,7 +228,7 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
     return globals()[g](R,C), time_series, f
 
 
-def pos_max_max_bump_on_decreasing_sequence(time_series):
+def max_max_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -251,7 +251,7 @@ def pos_max_max_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_decreasing(time_series):
+def max_max_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = -inf 
@@ -274,7 +274,7 @@ def pos_max_max_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_decreasing_sequence(time_series):
+def max_max_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -297,7 +297,7 @@ def pos_max_max_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_decreasing_terrace(time_series):
+def max_max_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = -inf 
@@ -320,7 +320,7 @@ def pos_max_max_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_dip_on_increasing_sequence(time_series):
+def max_max_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -343,7 +343,7 @@ def pos_max_max_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_gorge(time_series):
+def max_max_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = -inf 
@@ -366,7 +366,7 @@ def pos_max_max_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_increasing(time_series):
+def max_max_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = -inf 
@@ -389,7 +389,7 @@ def pos_max_max_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_increasing_sequence(time_series):
+def max_max_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -412,7 +412,7 @@ def pos_max_max_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_increasing_terrace(time_series):
+def max_max_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = -inf 
@@ -435,7 +435,7 @@ def pos_max_max_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_inflexion(time_series):
+def max_max_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = -inf 
@@ -458,7 +458,7 @@ def pos_max_max_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_peak(time_series):
+def max_max_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = -inf 
@@ -481,7 +481,7 @@ def pos_max_max_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_plain(time_series):
+def max_max_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = -inf 
@@ -504,7 +504,7 @@ def pos_max_max_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_plateau(time_series):
+def max_max_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = -inf 
@@ -527,7 +527,7 @@ def pos_max_max_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_proper_plain(time_series):
+def max_max_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = -inf 
@@ -550,7 +550,7 @@ def pos_max_max_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_proper_plateau(time_series):
+def max_max_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = -inf 
@@ -573,7 +573,7 @@ def pos_max_max_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_steady(time_series):
+def max_max_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = -inf 
@@ -596,7 +596,7 @@ def pos_max_max_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_steady_sequence(time_series):
+def max_max_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = -inf 
@@ -619,7 +619,7 @@ def pos_max_max_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_strictly_decreasing_sequence(time_series):
+def max_max_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -642,7 +642,7 @@ def pos_max_max_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_strictly_increasing_sequence(time_series):
+def max_max_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -665,7 +665,7 @@ def pos_max_max_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_summit(time_series):
+def max_max_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = -inf 
@@ -688,7 +688,7 @@ def pos_max_max_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_valley(time_series):
+def max_max_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = -inf 
@@ -711,7 +711,7 @@ def pos_max_max_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_max_zigzag(time_series):
+def max_max_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = -inf 
@@ -734,7 +734,7 @@ def pos_max_max_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_bump_on_decreasing_sequence(time_series):
+def max_min_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -757,7 +757,7 @@ def pos_max_min_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_decreasing(time_series):
+def max_min_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = -inf 
@@ -780,7 +780,7 @@ def pos_max_min_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_decreasing_sequence(time_series):
+def max_min_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -803,7 +803,7 @@ def pos_max_min_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_decreasing_terrace(time_series):
+def max_min_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = -inf 
@@ -826,7 +826,7 @@ def pos_max_min_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_dip_on_increasing_sequence(time_series):
+def max_min_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -849,7 +849,7 @@ def pos_max_min_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_gorge(time_series):
+def max_min_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = -inf 
@@ -872,7 +872,7 @@ def pos_max_min_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_increasing(time_series):
+def max_min_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = -inf 
@@ -895,7 +895,7 @@ def pos_max_min_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_increasing_sequence(time_series):
+def max_min_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -918,7 +918,7 @@ def pos_max_min_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_increasing_terrace(time_series):
+def max_min_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = -inf 
@@ -941,7 +941,7 @@ def pos_max_min_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_inflexion(time_series):
+def max_min_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = -inf 
@@ -964,7 +964,7 @@ def pos_max_min_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_peak(time_series):
+def max_min_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = -inf 
@@ -987,7 +987,7 @@ def pos_max_min_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_plain(time_series):
+def max_min_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = -inf 
@@ -1010,7 +1010,7 @@ def pos_max_min_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_plateau(time_series):
+def max_min_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = -inf 
@@ -1033,7 +1033,7 @@ def pos_max_min_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_proper_plain(time_series):
+def max_min_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = -inf 
@@ -1056,7 +1056,7 @@ def pos_max_min_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_proper_plateau(time_series):
+def max_min_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = -inf 
@@ -1079,7 +1079,7 @@ def pos_max_min_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_steady(time_series):
+def max_min_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = -inf 
@@ -1102,7 +1102,7 @@ def pos_max_min_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_steady_sequence(time_series):
+def max_min_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = -inf 
@@ -1125,7 +1125,7 @@ def pos_max_min_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_strictly_decreasing_sequence(time_series):
+def max_min_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1148,7 +1148,7 @@ def pos_max_min_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_strictly_increasing_sequence(time_series):
+def max_min_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1171,7 +1171,7 @@ def pos_max_min_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_summit(time_series):
+def max_min_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = -inf 
@@ -1194,7 +1194,7 @@ def pos_max_min_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_valley(time_series):
+def max_min_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = -inf 
@@ -1217,7 +1217,7 @@ def pos_max_min_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_min_zigzag(time_series):
+def max_min_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = -inf 
@@ -1240,7 +1240,7 @@ def pos_max_min_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_bump_on_decreasing_sequence(time_series):
+def max_surf_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1263,7 +1263,7 @@ def pos_max_surf_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_decreasing(time_series):
+def max_surf_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = -inf 
@@ -1286,7 +1286,7 @@ def pos_max_surf_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_decreasing_sequence(time_series):
+def max_surf_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1309,7 +1309,7 @@ def pos_max_surf_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_decreasing_terrace(time_series):
+def max_surf_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = -inf 
@@ -1332,7 +1332,7 @@ def pos_max_surf_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_dip_on_increasing_sequence(time_series):
+def max_surf_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1355,7 +1355,7 @@ def pos_max_surf_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_gorge(time_series):
+def max_surf_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = -inf 
@@ -1378,7 +1378,7 @@ def pos_max_surf_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_increasing(time_series):
+def max_surf_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = -inf 
@@ -1401,7 +1401,7 @@ def pos_max_surf_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_increasing_sequence(time_series):
+def max_surf_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1424,7 +1424,7 @@ def pos_max_surf_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_increasing_terrace(time_series):
+def max_surf_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = -inf 
@@ -1447,7 +1447,7 @@ def pos_max_surf_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_inflexion(time_series):
+def max_surf_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = -inf 
@@ -1470,7 +1470,7 @@ def pos_max_surf_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_peak(time_series):
+def max_surf_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = -inf 
@@ -1493,7 +1493,7 @@ def pos_max_surf_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_plain(time_series):
+def max_surf_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = -inf 
@@ -1516,7 +1516,7 @@ def pos_max_surf_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_plateau(time_series):
+def max_surf_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = -inf 
@@ -1539,7 +1539,7 @@ def pos_max_surf_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_proper_plain(time_series):
+def max_surf_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = -inf 
@@ -1562,7 +1562,7 @@ def pos_max_surf_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_proper_plateau(time_series):
+def max_surf_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = -inf 
@@ -1585,7 +1585,7 @@ def pos_max_surf_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_steady(time_series):
+def max_surf_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = -inf 
@@ -1608,7 +1608,7 @@ def pos_max_surf_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_steady_sequence(time_series):
+def max_surf_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = -inf 
@@ -1631,7 +1631,7 @@ def pos_max_surf_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_strictly_decreasing_sequence(time_series):
+def max_surf_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1654,7 +1654,7 @@ def pos_max_surf_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_strictly_increasing_sequence(time_series):
+def max_surf_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = -inf 
@@ -1677,7 +1677,7 @@ def pos_max_surf_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_summit(time_series):
+def max_surf_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = -inf 
@@ -1700,7 +1700,7 @@ def pos_max_surf_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_valley(time_series):
+def max_surf_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = -inf 
@@ -1723,7 +1723,7 @@ def pos_max_surf_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_surf_zigzag(time_series):
+def max_surf_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = -inf 
@@ -1746,7 +1746,7 @@ def pos_max_surf_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_bump_on_decreasing_sequence(time_series):
+def max_width_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = 0.0 
@@ -1769,7 +1769,7 @@ def pos_max_width_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_decreasing(time_series):
+def max_width_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = 0.0 
@@ -1792,7 +1792,7 @@ def pos_max_width_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_decreasing_sequence(time_series):
+def max_width_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = 0.0 
@@ -1815,7 +1815,7 @@ def pos_max_width_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_decreasing_terrace(time_series):
+def max_width_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = 0.0 
@@ -1838,7 +1838,7 @@ def pos_max_width_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_dip_on_increasing_sequence(time_series):
+def max_width_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = 0.0 
@@ -1861,7 +1861,7 @@ def pos_max_width_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_gorge(time_series):
+def max_width_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = 0.0 
@@ -1884,7 +1884,7 @@ def pos_max_width_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_increasing(time_series):
+def max_width_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = 0.0 
@@ -1907,7 +1907,7 @@ def pos_max_width_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_increasing_sequence(time_series):
+def max_width_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = 0.0 
@@ -1930,7 +1930,7 @@ def pos_max_width_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_increasing_terrace(time_series):
+def max_width_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = 0.0 
@@ -1953,7 +1953,7 @@ def pos_max_width_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_inflexion(time_series):
+def max_width_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = 0.0 
@@ -1976,7 +1976,7 @@ def pos_max_width_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_peak(time_series):
+def max_width_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = 0.0 
@@ -1999,7 +1999,7 @@ def pos_max_width_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_plain(time_series):
+def max_width_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = 0.0 
@@ -2022,7 +2022,7 @@ def pos_max_width_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_plateau(time_series):
+def max_width_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = 0.0 
@@ -2045,7 +2045,7 @@ def pos_max_width_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_proper_plain(time_series):
+def max_width_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = 0.0 
@@ -2068,7 +2068,7 @@ def pos_max_width_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_proper_plateau(time_series):
+def max_width_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = 0.0 
@@ -2091,7 +2091,7 @@ def pos_max_width_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_steady(time_series):
+def max_width_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = 0.0 
@@ -2114,7 +2114,7 @@ def pos_max_width_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_steady_sequence(time_series):
+def max_width_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = 0.0 
@@ -2137,7 +2137,7 @@ def pos_max_width_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_strictly_decreasing_sequence(time_series):
+def max_width_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = 0.0 
@@ -2160,7 +2160,7 @@ def pos_max_width_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_strictly_increasing_sequence(time_series):
+def max_width_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = 0.0 
@@ -2183,7 +2183,7 @@ def pos_max_width_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_summit(time_series):
+def max_width_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = 0.0 
@@ -2206,7 +2206,7 @@ def pos_max_width_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_valley(time_series):
+def max_width_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = 0.0 
@@ -2229,7 +2229,7 @@ def pos_max_width_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_max_width_zigzag(time_series):
+def max_width_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = 0.0 
@@ -2252,7 +2252,7 @@ def pos_max_width_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_bump_on_decreasing_sequence(time_series):
+def min_max_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -2275,7 +2275,7 @@ def pos_min_max_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_decreasing(time_series):
+def min_max_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = inf 
@@ -2298,7 +2298,7 @@ def pos_min_max_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_decreasing_sequence(time_series):
+def min_max_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -2321,7 +2321,7 @@ def pos_min_max_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_decreasing_terrace(time_series):
+def min_max_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = inf 
@@ -2344,7 +2344,7 @@ def pos_min_max_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_dip_on_increasing_sequence(time_series):
+def min_max_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -2367,7 +2367,7 @@ def pos_min_max_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_gorge(time_series):
+def min_max_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = inf 
@@ -2390,7 +2390,7 @@ def pos_min_max_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_increasing(time_series):
+def min_max_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = inf 
@@ -2413,7 +2413,7 @@ def pos_min_max_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_increasing_sequence(time_series):
+def min_max_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -2436,7 +2436,7 @@ def pos_min_max_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_increasing_terrace(time_series):
+def min_max_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = inf 
@@ -2459,7 +2459,7 @@ def pos_min_max_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_inflexion(time_series):
+def min_max_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = inf 
@@ -2482,7 +2482,7 @@ def pos_min_max_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_peak(time_series):
+def min_max_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = inf 
@@ -2505,7 +2505,7 @@ def pos_min_max_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_plain(time_series):
+def min_max_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = inf 
@@ -2528,7 +2528,7 @@ def pos_min_max_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_plateau(time_series):
+def min_max_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = inf 
@@ -2551,7 +2551,7 @@ def pos_min_max_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_proper_plain(time_series):
+def min_max_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = inf 
@@ -2574,7 +2574,7 @@ def pos_min_max_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_proper_plateau(time_series):
+def min_max_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = inf 
@@ -2597,7 +2597,7 @@ def pos_min_max_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_steady(time_series):
+def min_max_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = inf 
@@ -2620,7 +2620,7 @@ def pos_min_max_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_steady_sequence(time_series):
+def min_max_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = inf 
@@ -2643,7 +2643,7 @@ def pos_min_max_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_strictly_decreasing_sequence(time_series):
+def min_max_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -2666,7 +2666,7 @@ def pos_min_max_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_strictly_increasing_sequence(time_series):
+def min_max_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -2689,7 +2689,7 @@ def pos_min_max_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_summit(time_series):
+def min_max_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = inf 
@@ -2712,7 +2712,7 @@ def pos_min_max_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_valley(time_series):
+def min_max_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = inf 
@@ -2735,7 +2735,7 @@ def pos_min_max_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_max_zigzag(time_series):
+def min_max_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = inf 
@@ -2758,7 +2758,7 @@ def pos_min_max_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_bump_on_decreasing_sequence(time_series):
+def min_min_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -2781,7 +2781,7 @@ def pos_min_min_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_decreasing(time_series):
+def min_min_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = inf 
@@ -2804,7 +2804,7 @@ def pos_min_min_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_decreasing_sequence(time_series):
+def min_min_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -2827,7 +2827,7 @@ def pos_min_min_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_decreasing_terrace(time_series):
+def min_min_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = inf 
@@ -2850,7 +2850,7 @@ def pos_min_min_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_dip_on_increasing_sequence(time_series):
+def min_min_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -2873,7 +2873,7 @@ def pos_min_min_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_gorge(time_series):
+def min_min_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = inf 
@@ -2896,7 +2896,7 @@ def pos_min_min_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_increasing(time_series):
+def min_min_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = inf 
@@ -2919,7 +2919,7 @@ def pos_min_min_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_increasing_sequence(time_series):
+def min_min_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -2942,7 +2942,7 @@ def pos_min_min_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_increasing_terrace(time_series):
+def min_min_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = inf 
@@ -2965,7 +2965,7 @@ def pos_min_min_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_inflexion(time_series):
+def min_min_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = inf 
@@ -2988,7 +2988,7 @@ def pos_min_min_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_peak(time_series):
+def min_min_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = inf 
@@ -3011,7 +3011,7 @@ def pos_min_min_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_plain(time_series):
+def min_min_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = inf 
@@ -3034,7 +3034,7 @@ def pos_min_min_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_plateau(time_series):
+def min_min_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = inf 
@@ -3057,7 +3057,7 @@ def pos_min_min_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_proper_plain(time_series):
+def min_min_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = inf 
@@ -3080,7 +3080,7 @@ def pos_min_min_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_proper_plateau(time_series):
+def min_min_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = inf 
@@ -3103,7 +3103,7 @@ def pos_min_min_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_steady(time_series):
+def min_min_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = inf 
@@ -3126,7 +3126,7 @@ def pos_min_min_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_steady_sequence(time_series):
+def min_min_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = inf 
@@ -3149,7 +3149,7 @@ def pos_min_min_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_strictly_decreasing_sequence(time_series):
+def min_min_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -3172,7 +3172,7 @@ def pos_min_min_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_strictly_increasing_sequence(time_series):
+def min_min_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -3195,7 +3195,7 @@ def pos_min_min_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_summit(time_series):
+def min_min_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = inf 
@@ -3218,7 +3218,7 @@ def pos_min_min_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_valley(time_series):
+def min_min_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = inf 
@@ -3241,7 +3241,7 @@ def pos_min_min_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_min_zigzag(time_series):
+def min_min_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = inf 
@@ -3264,7 +3264,7 @@ def pos_min_min_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_bump_on_decreasing_sequence(time_series):
+def min_surf_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -3287,7 +3287,7 @@ def pos_min_surf_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_decreasing(time_series):
+def min_surf_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = inf 
@@ -3310,7 +3310,7 @@ def pos_min_surf_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_decreasing_sequence(time_series):
+def min_surf_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -3333,7 +3333,7 @@ def pos_min_surf_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_decreasing_terrace(time_series):
+def min_surf_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = inf 
@@ -3356,7 +3356,7 @@ def pos_min_surf_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_dip_on_increasing_sequence(time_series):
+def min_surf_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -3379,7 +3379,7 @@ def pos_min_surf_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_gorge(time_series):
+def min_surf_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = inf 
@@ -3402,7 +3402,7 @@ def pos_min_surf_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_increasing(time_series):
+def min_surf_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = inf 
@@ -3425,7 +3425,7 @@ def pos_min_surf_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_increasing_sequence(time_series):
+def min_surf_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -3448,7 +3448,7 @@ def pos_min_surf_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_increasing_terrace(time_series):
+def min_surf_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = inf 
@@ -3471,7 +3471,7 @@ def pos_min_surf_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_inflexion(time_series):
+def min_surf_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = inf 
@@ -3494,7 +3494,7 @@ def pos_min_surf_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_peak(time_series):
+def min_surf_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = inf 
@@ -3517,7 +3517,7 @@ def pos_min_surf_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_plain(time_series):
+def min_surf_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = inf 
@@ -3540,7 +3540,7 @@ def pos_min_surf_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_plateau(time_series):
+def min_surf_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = inf 
@@ -3563,7 +3563,7 @@ def pos_min_surf_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_proper_plain(time_series):
+def min_surf_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = inf 
@@ -3586,7 +3586,7 @@ def pos_min_surf_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_proper_plateau(time_series):
+def min_surf_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = inf 
@@ -3609,7 +3609,7 @@ def pos_min_surf_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_steady(time_series):
+def min_surf_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = inf 
@@ -3632,7 +3632,7 @@ def pos_min_surf_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_steady_sequence(time_series):
+def min_surf_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = inf 
@@ -3655,7 +3655,7 @@ def pos_min_surf_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_strictly_decreasing_sequence(time_series):
+def min_surf_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -3678,7 +3678,7 @@ def pos_min_surf_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_strictly_increasing_sequence(time_series):
+def min_surf_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -3701,7 +3701,7 @@ def pos_min_surf_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_summit(time_series):
+def min_surf_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = inf 
@@ -3724,7 +3724,7 @@ def pos_min_surf_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_valley(time_series):
+def min_surf_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = inf 
@@ -3747,7 +3747,7 @@ def pos_min_surf_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_surf_zigzag(time_series):
+def min_surf_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = inf 
@@ -3770,7 +3770,7 @@ def pos_min_surf_zigzag(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_bump_on_decreasing_sequence(time_series):
+def min_width_bump_on_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.BUMP_ON_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -3793,7 +3793,7 @@ def pos_min_width_bump_on_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_decreasing(time_series):
+def min_width_decreasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING)
     default_g_f = inf 
@@ -3816,7 +3816,7 @@ def pos_min_width_decreasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_decreasing_sequence(time_series):
+def min_width_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -3839,7 +3839,7 @@ def pos_min_width_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_decreasing_terrace(time_series):
+def min_width_decreasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DECREASING_TERRACE)
     default_g_f = inf 
@@ -3862,7 +3862,7 @@ def pos_min_width_decreasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_dip_on_increasing_sequence(time_series):
+def min_width_dip_on_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.DIP_ON_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -3885,7 +3885,7 @@ def pos_min_width_dip_on_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_gorge(time_series):
+def min_width_gorge(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.GORGE)
     default_g_f = inf 
@@ -3908,7 +3908,7 @@ def pos_min_width_gorge(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_increasing(time_series):
+def min_width_increasing(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING)
     default_g_f = inf 
@@ -3931,7 +3931,7 @@ def pos_min_width_increasing(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_increasing_sequence(time_series):
+def min_width_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -3954,7 +3954,7 @@ def pos_min_width_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_increasing_terrace(time_series):
+def min_width_increasing_terrace(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INCREASING_TERRACE)
     default_g_f = inf 
@@ -3977,7 +3977,7 @@ def pos_min_width_increasing_terrace(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_inflexion(time_series):
+def min_width_inflexion(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.INFLEXION)
     default_g_f = inf 
@@ -4000,7 +4000,7 @@ def pos_min_width_inflexion(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_peak(time_series):
+def min_width_peak(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PEAK)
     default_g_f = inf 
@@ -4023,7 +4023,7 @@ def pos_min_width_peak(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_plain(time_series):
+def min_width_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLAIN)
     default_g_f = inf 
@@ -4046,7 +4046,7 @@ def pos_min_width_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_plateau(time_series):
+def min_width_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PLATEAU)
     default_g_f = inf 
@@ -4069,7 +4069,7 @@ def pos_min_width_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_proper_plain(time_series):
+def min_width_proper_plain(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLAIN)
     default_g_f = inf 
@@ -4092,7 +4092,7 @@ def pos_min_width_proper_plain(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_proper_plateau(time_series):
+def min_width_proper_plateau(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.PROPER_PLATEAU)
     default_g_f = inf 
@@ -4115,7 +4115,7 @@ def pos_min_width_proper_plateau(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_steady(time_series):
+def min_width_steady(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY)
     default_g_f = inf 
@@ -4138,7 +4138,7 @@ def pos_min_width_steady(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_steady_sequence(time_series):
+def min_width_steady_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STEADY_SEQUENCE)
     default_g_f = inf 
@@ -4161,7 +4161,7 @@ def pos_min_width_steady_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_strictly_decreasing_sequence(time_series):
+def min_width_strictly_decreasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_DECREASING_SEQUENCE)
     default_g_f = inf 
@@ -4184,7 +4184,7 @@ def pos_min_width_strictly_decreasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_strictly_increasing_sequence(time_series):
+def min_width_strictly_increasing_sequence(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.STRICTLY_INCREASING_SEQUENCE)
     default_g_f = inf 
@@ -4207,7 +4207,7 @@ def pos_min_width_strictly_increasing_sequence(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_summit(time_series):
+def min_width_summit(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.SUMMIT)
     default_g_f = inf 
@@ -4230,7 +4230,7 @@ def pos_min_width_summit(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_valley(time_series):
+def min_width_valley(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.VALLEY)
     default_g_f = inf 
@@ -4253,7 +4253,7 @@ def pos_min_width_valley(time_series):
     return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
 
 
-def pos_min_width_zigzag(time_series):
+def min_width_zigzag(time_series):
     signature = time_series_to_signature_parser(time_series)
     semantics = signature_to_semantic(signature, Patterns.ZIGZAG)
     default_g_f = inf 
