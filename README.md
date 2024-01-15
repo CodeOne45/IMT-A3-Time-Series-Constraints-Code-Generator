@@ -35,6 +35,6 @@ The test conatins 2 types of tests:
 - Tests that check if the generated functions satisfy the constraints based on a list of Time Series
 - Tests that check the performance of the generated functions based on big time series
 
-For example, here is the output image (public/covied.png) of the performance test based on the Time Series: Covid new patients in intensive care:
+For example, here is the output image of the performance test based on the Time Series: Covid new patients in intensive care:
 
 ![Covid new patients in intensive care](public/perf-test.png)

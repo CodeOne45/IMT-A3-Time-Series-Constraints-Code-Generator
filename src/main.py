@@ -26,8 +26,11 @@ if __name__ == "__main__":
 
     # decorationTables.json'
     tables = json.load(open('src/decorationTables.json'))["tables"]["decoration"]
+    features = json.load(open('src/decorationTables.json'))["tables"]["features"]
+    aggregators = json.load(open('src/decorationTables.json'))["tables"]["aggregators"]
+
     #convert transducers dic to json object
-    transducerGenerator = TransducerGenerator(transducers, tables)
+    transducerGenerator = TransducerGenerator(transducers, tables, aggregators, features)
     transducerGenerator.generate_functions()
 
 

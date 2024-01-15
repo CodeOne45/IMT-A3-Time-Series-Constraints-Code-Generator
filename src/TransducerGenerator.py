@@ -10,49 +10,11 @@ import json
 
 
 class TransducerGenerator:
-    def __init__(self, transducers, tablesConfig):
+    def __init__(self, transducers, inDecorationTable, inAggregators, inFeatures):
         self.transducers = transducers
-        self.decorationTables = tablesConfig
-
-        self.features = {
-            "max": {
-                "neutral_f": "-inf",
-                "min_f": "-inf",
-                "max_f": "inf",
-                "phi_f": "max",
-                "delta_f": "x_i"
-            },
-            "min": {
-                "neutral_f": "inf",
-                "min_f": "-inf",
-                "max_f": "inf",
-                "phi_f": "min",
-                "delta_f": "x_i"
-            },
-            "surf": {
-                "neutral_f": "0",
-                "min_f": "-inf",
-                "max_f": "inf",
-                "phi_f": "add",
-                "delta_f": "x_i"
-            },
-            "width": {
-                "neutral_f": "0",
-                "min_f": "0",
-                "max_f": "inf",
-                "phi_f": "add",
-                "delta_f": "1"
-            }
-        }
-
-        self.aggregators = {
-            "Max": {
-                "default_g_f": "min_f"
-            },
-            "Min": {
-                "default_g_f": "max_f"
-            }
-        }
+        self.decorationTables = inDecorationTable
+        self.features = inFeatures
+        self.aggregators = inAggregators
 
 
     def generate_functions(self):
@@ -62,7 +24,7 @@ class TransducerGenerator:
     def generate_transducer_function(self, transducers):
         #create a file in gen/GeneratedFunctions.py and than open it
         f = open(f"gen/GeneratedFunctions.py", "w")
-        
+
         # Writing imports
         self.write_imports(f)
 
