@@ -1,6 +1,5 @@
 # TransducerGenerator.py
 
-import yaml
 import re
 from Enums.Patterns import Patterns
 from Enums.Semantics import Semantics

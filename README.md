@@ -11,6 +11,31 @@ The goal is to generate a code that can be used to generate time series that sat
 pip install -r requirements.txt
 ```
 
+or Create a Virtual Environment:
+
+```bash
+python3 -m venv myenv
+```
+
+On macOS/Linux:
+
+```bash
+source myenv/bin/activate
+```
+
+On Windows:
+
+```bash
+myenv\Scripts\activate
+```
+
+Than install the requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+
 ## Usage
 
 #### Generate functions based on transducers:
@@ -37,4 +62,23 @@ The test conatins 2 types of tests:
 
 For example, here is the output image of the performance test based on the Time Series: Covid new patients in intensive care:
 
-![Covid new patients in intensive care](public/perf-test.png)
+![Global climate change data from 1950 to 2015](public/perf-test.png)
+
+
+### Remove the Virtual Environment
+
+```bash
+deactivate
+```
+
+On macOS/Linux:
+
+```bash
+rm -rf myenv
+```
+
+On Windows:
+
+```bash
+rmdir /s /q myenv
+```
