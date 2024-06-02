@@ -22,7 +22,7 @@ operator_mapping = {
     "Max": lambda x, y: x > y,
 }
 
-def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after): 
+def applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after): 
     i = 0
 
     delta_x_i = True if delta_f == "x_i" else False
@@ -42,7 +42,7 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
                     f[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    C = globals()[operetor](delta_f_1, (    globals()[operetor](D, delta_f)))
+                    C = globals()[operator](delta_f_1, (    globals()[operator](D, delta_f)))
 
                     D = neutral_f
 
@@ -51,44 +51,44 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
                     f[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    C = globals()[operetor](D, delta_f)
+                    C = globals()[operator](D, delta_f)
 
                     D = neutral_f
 
             case Semantics.FOUND_END:
                 if after == 0:
-                    if operator_mapping[aggregator_data](globals()[operetor](globals()[operetor](D,delta_f),delta_f_1), R):
+                    if operator_mapping[aggregator_data](globals()[operator](globals()[operator](D,delta_f),delta_f_1), R):
                             f[i] = GuardValue(float(inf), ct, i, "ct")
                             at[i] = GuardValue(0)
                             ct[i] = GuardValue(float(inf), at, i+1, "at")
-                    if globals()[operetor](globals()[operetor](D,delta_f),delta_f_1) == R:
+                    if globals()[operator](globals()[operator](D,delta_f),delta_f_1) == R:
                             f[i] = GuardValue(float(inf), at, i+1, "at")
                             ct[i] = GuardValue(float(inf), at, i+1, "at")
                             at[i] = GuardValue(float(inf), at, i+1, "at")
-                    if operator_mapping[aggregator_data](R, globals()[operetor](globals()[operetor](D,delta_f),delta_f_1)):
+                    if operator_mapping[aggregator_data](R, globals()[operator](globals()[operator](D,delta_f),delta_f_1)):
                             f[i] = GuardValue(0)
                             ct[i] = GuardValue(0)
                             at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    R = globals()[g](R, (    globals()[operetor](delta_f_1, (    globals()[operetor](D, delta_f)))))
+                    R = globals()[g](R, (    globals()[operator](delta_f_1, (    globals()[operator](D, delta_f)))))
 
                     D = neutral_f
 
                 if after == 1:
-                    if operator_mapping[aggregator_data](globals()[operetor](D,delta_f), R ):
+                    if operator_mapping[aggregator_data](globals()[operator](D,delta_f), R ):
                             f[i] = GuardValue(float(inf), ct, i, "ct")
                             at[i] = GuardValue(0)
                             ct[i] = GuardValue(float(inf), at, i+1, "at")
-                    if globals()[operetor](D,delta_f) == R:
+                    if globals()[operator](D,delta_f) == R:
                             f[i] = GuardValue(float(inf), at, i+1, "at")
                             ct[i] = GuardValue(float(inf), at, i+1, "at")
                             at[i] = GuardValue(float(inf), at, i+1, "at")
-                    if operator_mapping[aggregator_data](R, globals()[operetor](D,delta_f)):
+                    if operator_mapping[aggregator_data](R, globals()[operator](D,delta_f)):
                             f[i] = GuardValue(0)
                             ct[i] = GuardValue(0)
                             at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    R = globals()[g](R, (    globals()[operetor](D, delta_f)))
+                    R = globals()[g](R, (    globals()[operator](D, delta_f)))
 
                     D = neutral_f
 
@@ -98,14 +98,14 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
                     ct[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    D = globals()[operetor](D, delta_f)
+                    D = globals()[operator](D, delta_f)
 
                 if after == 1:
                     f[i] = GuardValue(0)
                     ct[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    D = globals()[operetor](D, delta_f)
+                    D = globals()[operator](D, delta_f)
 
             case Semantics.OUT_RESET:
                 if after == 0:
@@ -128,7 +128,7 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
                     ct[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    C = globals()[operetor](C, (    globals()[operetor](D, delta_f_1)))
+                    C = globals()[operator](C, (    globals()[operator](D, delta_f_1)))
 
                     D = neutral_f
 
@@ -137,7 +137,7 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
                     ct[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    C = globals()[operetor](C, (    globals()[operetor](D, delta_f)))
+                    C = globals()[operator](C, (    globals()[operator](D, delta_f)))
 
                     D = neutral_f
 
@@ -147,14 +147,14 @@ def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delt
                     ct[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    D = globals()[operetor](D, delta_f_1)
+                    D = globals()[operator](D, delta_f_1)
 
                 if after == 1:
                     f[i] = GuardValue(0)
                     ct[i] = GuardValue(float(inf), ct, i+1, "ct")
                     at[i] = GuardValue(float(inf), at, i+1, "at")
 
-                    D = globals()[operetor](D, delta_f)
+                    D = globals()[operator](D, delta_f)
 
             case Semantics.OUT_AFTER:
                 if after == 0:
@@ -242,13 +242,13 @@ def max_max_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_decreasing(time_series):
@@ -265,13 +265,13 @@ def max_max_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_decreasing_sequence(time_series):
@@ -288,13 +288,13 @@ def max_max_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_decreasing_terrace(time_series):
@@ -311,13 +311,13 @@ def max_max_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_dip_on_increasing_sequence(time_series):
@@ -334,13 +334,13 @@ def max_max_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_gorge(time_series):
@@ -357,13 +357,13 @@ def max_max_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_increasing(time_series):
@@ -380,13 +380,13 @@ def max_max_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_increasing_sequence(time_series):
@@ -403,13 +403,13 @@ def max_max_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_increasing_terrace(time_series):
@@ -426,13 +426,13 @@ def max_max_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_inflexion(time_series):
@@ -449,13 +449,13 @@ def max_max_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_peak(time_series):
@@ -472,13 +472,13 @@ def max_max_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_plain(time_series):
@@ -495,13 +495,13 @@ def max_max_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_plateau(time_series):
@@ -518,13 +518,13 @@ def max_max_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_proper_plain(time_series):
@@ -541,13 +541,13 @@ def max_max_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_proper_plateau(time_series):
@@ -564,13 +564,13 @@ def max_max_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_steady(time_series):
@@ -587,13 +587,13 @@ def max_max_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_steady_sequence(time_series):
@@ -610,13 +610,13 @@ def max_max_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_strictly_decreasing_sequence(time_series):
@@ -633,13 +633,13 @@ def max_max_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_strictly_increasing_sequence(time_series):
@@ -656,13 +656,13 @@ def max_max_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_summit(time_series):
@@ -679,13 +679,13 @@ def max_max_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_valley(time_series):
@@ -702,13 +702,13 @@ def max_max_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_max_zigzag(time_series):
@@ -725,13 +725,13 @@ def max_max_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_bump_on_decreasing_sequence(time_series):
@@ -748,13 +748,13 @@ def max_min_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_decreasing(time_series):
@@ -771,13 +771,13 @@ def max_min_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_decreasing_sequence(time_series):
@@ -794,13 +794,13 @@ def max_min_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_decreasing_terrace(time_series):
@@ -817,13 +817,13 @@ def max_min_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_dip_on_increasing_sequence(time_series):
@@ -840,13 +840,13 @@ def max_min_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_gorge(time_series):
@@ -863,13 +863,13 @@ def max_min_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_increasing(time_series):
@@ -886,13 +886,13 @@ def max_min_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_increasing_sequence(time_series):
@@ -909,13 +909,13 @@ def max_min_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_increasing_terrace(time_series):
@@ -932,13 +932,13 @@ def max_min_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_inflexion(time_series):
@@ -955,13 +955,13 @@ def max_min_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_peak(time_series):
@@ -978,13 +978,13 @@ def max_min_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_plain(time_series):
@@ -1001,13 +1001,13 @@ def max_min_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_plateau(time_series):
@@ -1024,13 +1024,13 @@ def max_min_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_proper_plain(time_series):
@@ -1047,13 +1047,13 @@ def max_min_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_proper_plateau(time_series):
@@ -1070,13 +1070,13 @@ def max_min_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_steady(time_series):
@@ -1093,13 +1093,13 @@ def max_min_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_steady_sequence(time_series):
@@ -1116,13 +1116,13 @@ def max_min_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_strictly_decreasing_sequence(time_series):
@@ -1139,13 +1139,13 @@ def max_min_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_strictly_increasing_sequence(time_series):
@@ -1162,13 +1162,13 @@ def max_min_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_summit(time_series):
@@ -1185,13 +1185,13 @@ def max_min_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_valley(time_series):
@@ -1208,13 +1208,13 @@ def max_min_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_min_zigzag(time_series):
@@ -1231,13 +1231,13 @@ def max_min_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_bump_on_decreasing_sequence(time_series):
@@ -1254,13 +1254,13 @@ def max_surf_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_decreasing(time_series):
@@ -1277,13 +1277,13 @@ def max_surf_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_decreasing_sequence(time_series):
@@ -1300,13 +1300,13 @@ def max_surf_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_decreasing_terrace(time_series):
@@ -1323,13 +1323,13 @@ def max_surf_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_dip_on_increasing_sequence(time_series):
@@ -1346,13 +1346,13 @@ def max_surf_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_gorge(time_series):
@@ -1369,13 +1369,13 @@ def max_surf_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_increasing(time_series):
@@ -1392,13 +1392,13 @@ def max_surf_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_increasing_sequence(time_series):
@@ -1415,13 +1415,13 @@ def max_surf_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_increasing_terrace(time_series):
@@ -1438,13 +1438,13 @@ def max_surf_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_inflexion(time_series):
@@ -1461,13 +1461,13 @@ def max_surf_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_peak(time_series):
@@ -1484,13 +1484,13 @@ def max_surf_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_plain(time_series):
@@ -1507,13 +1507,13 @@ def max_surf_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_plateau(time_series):
@@ -1530,13 +1530,13 @@ def max_surf_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_proper_plain(time_series):
@@ -1553,13 +1553,13 @@ def max_surf_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_proper_plateau(time_series):
@@ -1576,13 +1576,13 @@ def max_surf_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_steady(time_series):
@@ -1599,13 +1599,13 @@ def max_surf_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_steady_sequence(time_series):
@@ -1622,13 +1622,13 @@ def max_surf_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_strictly_decreasing_sequence(time_series):
@@ -1645,13 +1645,13 @@ def max_surf_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_strictly_increasing_sequence(time_series):
@@ -1668,13 +1668,13 @@ def max_surf_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_summit(time_series):
@@ -1691,13 +1691,13 @@ def max_surf_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_valley(time_series):
@@ -1714,13 +1714,13 @@ def max_surf_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_surf_zigzag(time_series):
@@ -1737,13 +1737,13 @@ def max_surf_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_bump_on_decreasing_sequence(time_series):
@@ -1760,13 +1760,13 @@ def max_width_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_decreasing(time_series):
@@ -1783,13 +1783,13 @@ def max_width_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_decreasing_sequence(time_series):
@@ -1806,13 +1806,13 @@ def max_width_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_decreasing_terrace(time_series):
@@ -1829,13 +1829,13 @@ def max_width_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_dip_on_increasing_sequence(time_series):
@@ -1852,13 +1852,13 @@ def max_width_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_gorge(time_series):
@@ -1875,13 +1875,13 @@ def max_width_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_increasing(time_series):
@@ -1898,13 +1898,13 @@ def max_width_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_increasing_sequence(time_series):
@@ -1921,13 +1921,13 @@ def max_width_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_increasing_terrace(time_series):
@@ -1944,13 +1944,13 @@ def max_width_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_inflexion(time_series):
@@ -1967,13 +1967,13 @@ def max_width_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_peak(time_series):
@@ -1990,13 +1990,13 @@ def max_width_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_plain(time_series):
@@ -2013,13 +2013,13 @@ def max_width_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_plateau(time_series):
@@ -2036,13 +2036,13 @@ def max_width_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_proper_plain(time_series):
@@ -2059,13 +2059,13 @@ def max_width_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_proper_plateau(time_series):
@@ -2082,13 +2082,13 @@ def max_width_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_steady(time_series):
@@ -2105,13 +2105,13 @@ def max_width_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_steady_sequence(time_series):
@@ -2128,13 +2128,13 @@ def max_width_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_strictly_decreasing_sequence(time_series):
@@ -2151,13 +2151,13 @@ def max_width_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_strictly_increasing_sequence(time_series):
@@ -2174,13 +2174,13 @@ def max_width_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_summit(time_series):
@@ -2197,13 +2197,13 @@ def max_width_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_valley(time_series):
@@ -2220,13 +2220,13 @@ def max_width_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def max_width_zigzag(time_series):
@@ -2243,13 +2243,13 @@ def max_width_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Max"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_bump_on_decreasing_sequence(time_series):
@@ -2266,13 +2266,13 @@ def min_max_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_decreasing(time_series):
@@ -2289,13 +2289,13 @@ def min_max_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_decreasing_sequence(time_series):
@@ -2312,13 +2312,13 @@ def min_max_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_decreasing_terrace(time_series):
@@ -2335,13 +2335,13 @@ def min_max_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_dip_on_increasing_sequence(time_series):
@@ -2358,13 +2358,13 @@ def min_max_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_gorge(time_series):
@@ -2381,13 +2381,13 @@ def min_max_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_increasing(time_series):
@@ -2404,13 +2404,13 @@ def min_max_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_increasing_sequence(time_series):
@@ -2427,13 +2427,13 @@ def min_max_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_increasing_terrace(time_series):
@@ -2450,13 +2450,13 @@ def min_max_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_inflexion(time_series):
@@ -2473,13 +2473,13 @@ def min_max_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_peak(time_series):
@@ -2496,13 +2496,13 @@ def min_max_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_plain(time_series):
@@ -2519,13 +2519,13 @@ def min_max_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_plateau(time_series):
@@ -2542,13 +2542,13 @@ def min_max_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_proper_plain(time_series):
@@ -2565,13 +2565,13 @@ def min_max_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_proper_plateau(time_series):
@@ -2588,13 +2588,13 @@ def min_max_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_steady(time_series):
@@ -2611,13 +2611,13 @@ def min_max_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_steady_sequence(time_series):
@@ -2634,13 +2634,13 @@ def min_max_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_strictly_decreasing_sequence(time_series):
@@ -2657,13 +2657,13 @@ def min_max_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_strictly_increasing_sequence(time_series):
@@ -2680,13 +2680,13 @@ def min_max_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_summit(time_series):
@@ -2703,13 +2703,13 @@ def min_max_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_valley(time_series):
@@ -2726,13 +2726,13 @@ def min_max_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_max_zigzag(time_series):
@@ -2749,13 +2749,13 @@ def min_max_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "max_function"
+    operator = "max_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_bump_on_decreasing_sequence(time_series):
@@ -2772,13 +2772,13 @@ def min_min_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_decreasing(time_series):
@@ -2795,13 +2795,13 @@ def min_min_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_decreasing_sequence(time_series):
@@ -2818,13 +2818,13 @@ def min_min_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_decreasing_terrace(time_series):
@@ -2841,13 +2841,13 @@ def min_min_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_dip_on_increasing_sequence(time_series):
@@ -2864,13 +2864,13 @@ def min_min_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_gorge(time_series):
@@ -2887,13 +2887,13 @@ def min_min_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_increasing(time_series):
@@ -2910,13 +2910,13 @@ def min_min_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_increasing_sequence(time_series):
@@ -2933,13 +2933,13 @@ def min_min_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_increasing_terrace(time_series):
@@ -2956,13 +2956,13 @@ def min_min_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_inflexion(time_series):
@@ -2979,13 +2979,13 @@ def min_min_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_peak(time_series):
@@ -3002,13 +3002,13 @@ def min_min_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_plain(time_series):
@@ -3025,13 +3025,13 @@ def min_min_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_plateau(time_series):
@@ -3048,13 +3048,13 @@ def min_min_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_proper_plain(time_series):
@@ -3071,13 +3071,13 @@ def min_min_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_proper_plateau(time_series):
@@ -3094,13 +3094,13 @@ def min_min_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_steady(time_series):
@@ -3117,13 +3117,13 @@ def min_min_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_steady_sequence(time_series):
@@ -3140,13 +3140,13 @@ def min_min_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_strictly_decreasing_sequence(time_series):
@@ -3163,13 +3163,13 @@ def min_min_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_strictly_increasing_sequence(time_series):
@@ -3186,13 +3186,13 @@ def min_min_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_summit(time_series):
@@ -3209,13 +3209,13 @@ def min_min_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_valley(time_series):
@@ -3232,13 +3232,13 @@ def min_min_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_min_zigzag(time_series):
@@ -3255,13 +3255,13 @@ def min_min_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "min_function"
+    operator = "min_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_bump_on_decreasing_sequence(time_series):
@@ -3278,13 +3278,13 @@ def min_surf_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_decreasing(time_series):
@@ -3301,13 +3301,13 @@ def min_surf_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_decreasing_sequence(time_series):
@@ -3324,13 +3324,13 @@ def min_surf_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_decreasing_terrace(time_series):
@@ -3347,13 +3347,13 @@ def min_surf_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_dip_on_increasing_sequence(time_series):
@@ -3370,13 +3370,13 @@ def min_surf_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_gorge(time_series):
@@ -3393,13 +3393,13 @@ def min_surf_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_increasing(time_series):
@@ -3416,13 +3416,13 @@ def min_surf_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_increasing_sequence(time_series):
@@ -3439,13 +3439,13 @@ def min_surf_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_increasing_terrace(time_series):
@@ -3462,13 +3462,13 @@ def min_surf_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_inflexion(time_series):
@@ -3485,13 +3485,13 @@ def min_surf_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_peak(time_series):
@@ -3508,13 +3508,13 @@ def min_surf_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_plain(time_series):
@@ -3531,13 +3531,13 @@ def min_surf_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_plateau(time_series):
@@ -3554,13 +3554,13 @@ def min_surf_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_proper_plain(time_series):
@@ -3577,13 +3577,13 @@ def min_surf_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_proper_plateau(time_series):
@@ -3600,13 +3600,13 @@ def min_surf_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_steady(time_series):
@@ -3623,13 +3623,13 @@ def min_surf_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_steady_sequence(time_series):
@@ -3646,13 +3646,13 @@ def min_surf_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_strictly_decreasing_sequence(time_series):
@@ -3669,13 +3669,13 @@ def min_surf_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_strictly_increasing_sequence(time_series):
@@ -3692,13 +3692,13 @@ def min_surf_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_summit(time_series):
@@ -3715,13 +3715,13 @@ def min_surf_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_valley(time_series):
@@ -3738,13 +3738,13 @@ def min_surf_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_surf_zigzag(time_series):
@@ -3761,13 +3761,13 @@ def min_surf_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "x_i"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_bump_on_decreasing_sequence(time_series):
@@ -3784,13 +3784,13 @@ def min_width_bump_on_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_decreasing(time_series):
@@ -3807,13 +3807,13 @@ def min_width_decreasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_decreasing_sequence(time_series):
@@ -3830,13 +3830,13 @@ def min_width_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_decreasing_terrace(time_series):
@@ -3853,13 +3853,13 @@ def min_width_decreasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_dip_on_increasing_sequence(time_series):
@@ -3876,13 +3876,13 @@ def min_width_dip_on_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_gorge(time_series):
@@ -3899,13 +3899,13 @@ def min_width_gorge(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_increasing(time_series):
@@ -3922,13 +3922,13 @@ def min_width_increasing(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_increasing_sequence(time_series):
@@ -3945,13 +3945,13 @@ def min_width_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_increasing_terrace(time_series):
@@ -3968,13 +3968,13 @@ def min_width_increasing_terrace(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_inflexion(time_series):
@@ -3991,13 +3991,13 @@ def min_width_inflexion(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_peak(time_series):
@@ -4014,13 +4014,13 @@ def min_width_peak(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_plain(time_series):
@@ -4037,13 +4037,13 @@ def min_width_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_plateau(time_series):
@@ -4060,13 +4060,13 @@ def min_width_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_proper_plain(time_series):
@@ -4083,13 +4083,13 @@ def min_width_proper_plain(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_proper_plateau(time_series):
@@ -4106,13 +4106,13 @@ def min_width_proper_plateau(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_steady(time_series):
@@ -4129,13 +4129,13 @@ def min_width_steady(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_steady_sequence(time_series):
@@ -4152,13 +4152,13 @@ def min_width_steady_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_strictly_decreasing_sequence(time_series):
@@ -4175,13 +4175,13 @@ def min_width_strictly_decreasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_strictly_increasing_sequence(time_series):
@@ -4198,13 +4198,13 @@ def min_width_strictly_increasing_sequence(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 0
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_summit(time_series):
@@ -4221,13 +4221,13 @@ def min_width_summit(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_valley(time_series):
@@ -4244,13 +4244,13 @@ def min_width_valley(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 
 def min_width_zigzag(time_series):
@@ -4267,12 +4267,12 @@ def min_width_zigzag(time_series):
     ct = [GuardValue(0)] * len(time_series)
     f = [GuardValue(0)] * len(time_series)
 
-    operetor = "add_function"
+    operator = "add_function"
     delta_f = "1"
     aggregator_data = "Min"
 
     after = 1
 
-    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)
+    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)
 
 

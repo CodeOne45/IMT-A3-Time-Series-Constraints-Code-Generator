@@ -2,6 +2,13 @@ from math import inf
 
 # This class simulate a pointer for the guard calculation
 
+"""
+In the context of time series analysis, GuardValue helps manage state transitions and ensure values
+are correctly propagated and updated. This deferred evaluation mechanism ensures that calculations
+dynamically reference the most up-to-date values, similar to how pointers work in other programming languages.
+"""
+
+
 
 class GuardValue:
     # Unfortunately there isn't the possibility to have multiple constructors in python

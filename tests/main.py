@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 from TestGenFunctions import TestGeneratedFunctions
-from TestPerfprmance import PerformanceTests
+from PerformanceTests import PerformanceTests
 
 if __name__ == "__main__":
     file_path = Path('data/tsFunctionsTest.json')

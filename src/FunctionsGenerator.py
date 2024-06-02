@@ -99,16 +99,16 @@ class FunctionsGenerator:
             "    ct = [GuardValue(0)] * len(time_series)\n"
             "    f = [GuardValue(0)] * len(time_series)\n\n")
 
-        f.write(f"    operetor = \"{phi_f}_function\"\n")
+        f.write(f"    operator = \"{phi_f}_function\"\n")
         f.write(f"    delta_f = \"{self.features[feature_data]['delta_f']}\"\n")
         f.write(f"    aggregator_data = \"{aggregator_data}\"\n\n")
         f.write(f'    after = {self.transducers[pattern]["after"].__str__()}\n\n')
 
-        f.write(f"    return applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after)\n")
+        f.write(f"    return applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after)\n")
 
 
     def write_decoration_table(self,f, pattern, g, phi_f, aggregator_data, feature_data):
-        f.write(f'def applyDecoretor(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operetor, aggregator_data, after): \n')
+        f.write(f'def applyDecorator(time_series, semantics, at, ct, f, R, C, D, default_g_f, delta_f, neutral_f, operator, aggregator_data, after): \n')
         f.write("    i = 0\n\n")
 
         # if delta_f == "x_i" than delta_x_i = true else delta_x_i = false, a = condition ? value_if_true : value_if_false
@@ -191,7 +191,7 @@ class FunctionsGenerator:
             operator = "globals()[g]"
             line = line + f"{operator}({value1}, {value2})"
         elif operator == "phi_f":
-            operator = "globals()[operetor]"
+            operator = "globals()[operator]"
             line = line + f"{operator}({value1}, {value2})"
 
         return line
@@ -210,7 +210,7 @@ class FunctionsGenerator:
                 condition = f"    if {case['condition']}:"
 
                 condition = condition.replace("cond", "aggregator_data")  # Replacing <g by the < operator
-                condition = condition.replace("phi_f", "globals()[operetor]")  # Replacing phi_f by the appropriate function
+                condition = condition.replace("phi_f", "globals()[operator]")  # Replacing phi_f by the appropriate function
                 lines = lines + tab + condition + "\n"
             # Iterating on operations lines
             for operation in case["operations"]:
